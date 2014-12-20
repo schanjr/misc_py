@@ -1,0 +1,30 @@
+import requests
+import unittest 
+
+
+
+class Test_Case(unittest.TestCase):
+
+    '''get_all_entitlement='https://enterprise-api-dev.autodesk.com/service/entitlements/v1/user/'
+    oxygen_id='RFTAKYFJ8L5M'
+    apikey='apikey=1vKOxAnJL3Ns0mm2M5QqHYnY7SJYoLYr'
+    includeExpired='includeExpired=true'
+    url="%s%s?%s&%s" % (get_all_entitlement, oxygen_id, apikey,includeExpired)'''
+    def setUp(self):
+        import requests
+        import unittest 
+        get_all_entitlement='https://enterprise-api-dev.autodesk.com/service/entitlements/v1/user/'
+        oxygen_id='RFTAKYFJ8L5M'
+        apikey='apikey=1vKOxAnJL3Ns0mm2M5QqHYnY7SJYoLYr'
+        includeExpired='includeExpired=true'
+        self.url="%s%s?%s&%s" % (get_all_entitlement, oxygen_id, apikey,includeExpired)
+    
+    def test_getRequest(self):
+        r=requests.get(self.url)
+        js_load=r.json()
+        
+suite = unittest.TestLoader().loadTestsFromTestCase(Test_Case)
+a=unittest.TextTestRunner(verbosity=2).run(suite)
+#print jsload["endpointStatus"]["pelican"]["status"]
+
+print a
