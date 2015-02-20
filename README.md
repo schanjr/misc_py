@@ -1,4 +1,4 @@
 Misc
 ====
 
-Just some codes I don't have enough time to save to personal labtop
+Just some awesome codes I'm collecting for personal use. 
