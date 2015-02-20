@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
 
@@ -13,5 +14,7 @@ class Logger(object):
         self.log.write(message)  
 
 
-#Sample Usage
-#sys.stdout = Logger()
+if __name__=='__main__':
+    from os import getcwd
+    sys.stdout=Logger()
+    print "Logger file has been created at", getcwd()+'\\'+__file__.split('\\')[-1]+"_logger.txt"
