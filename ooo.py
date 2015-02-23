@@ -1,5 +1,4 @@
-
-
+##Code Snippet for playing around with Operators Overloading
 class Person:
     def __init__(self, name, job=None, pay=0):
         self.name=name
@@ -24,9 +23,50 @@ class Manager(Person):
     def __repr__(self):
         return '[Manager: %s,%s,%s]' % (self.name, self.job, self.pay)
     
-p = Person("James Mayer")
-c = Manager("John Adams", pay=100000)
-print c 
-c.giveRaise(percent=0.05)
-print c 
-print p 
+'''
+bob = Person('Bob Smith')
+sue = Person('Sue Jones', job='dev', 10000)    
+
+print(bob)
+print(sue)
+print(bob.lastName(), sue.lastName()) 
+sue.giveRaise(0.10)
+print sue
+tom=Manager('Tom Jones', 50000)
+tom.giveRaise(0.10)
+print(tom.lastName())
+print(tom) 
+'''
+    
+    
+#Code snippet for playing around the different implementation with Super()
+
+class Super(object):
+    def method(self):
+        print ('in Super.method')
+    def delegate(self):
+        self.action()
+
+class Inheritor(Super):
+    pass
+
+class Replacer(Super):
+    def method(self):
+        print ('in Replacer.method')
+        
+class Extender(Super):
+    def method(self):
+        print ('starting Extender.method')
+        Super.method(self)
+        print('ending Extender.method')
+
+class Provider(Super):
+    def action(self):
+        print ('in Provider.action')
+
+'''
+x=Provider()
+print x.delegate()
+'''
+        
+
