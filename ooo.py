@@ -69,16 +69,40 @@ x=Provider()
 print x.delegate()
 '''
 
+c=[i for i in range(10)]
+d=[i for i in range(11)]
+e=[i for i in range(10)]
+
+func1 = lambda x: sum(x)
+func2 = lambda x: sum(x)/len(x)
+func3 = lambda x:  x
+
+
+
+def cond_check(*conds):
+    for func, base, expected in conds:
+        print func(base),"=",expected,"?"
+        yield func(base)==expected
+        
+'''for i in  cond_check((func1,c,d),(func2,c,d), (func3,c,d),(func3, c,e)):
+    print i 
+'''
+
 class Shape(object):
     def __init__(self, shapename, **kwds):
         self.shapename = shapename
-        super(Shape, self).__init__(**kwds)
+        #super(Shape, self).__init__(**kwds)
 
 class ColoredShape(Shape):
     def __init__(self, color, **kwds):
         self.color = color
-        super(ColoredShape, self).__init__(**kwds)
+        super(ColoredShape,self).__init__(**kwds) #Calls back to the superclass Shape to do the __init__ constructor again. Since shapename key exists, maps to self.shapename
 
 cs = ColoredShape(color='red', shapename='circle')
+
+print cs.__dict__
+
+
+
         
 
