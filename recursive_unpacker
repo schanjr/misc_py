@@ -1,0 +1,24 @@
+def examiner(obj, *args):
+    dict_attrs=['iteritems', 'iterkeys', 'itervalues']
+    list_attrs=['append','insert', 'pop']
+    args=[i if type(i)==list else i for i in args]
+    if len(args)==0 or args==[] or args==[[]]:
+        return obj
+    else:
+        pop=args.pop(0)
+        if type(pop) is str:
+            return examiner(obj[pop],*args)
+        if type(pop) is int:
+            return examiner(list.__getitem__(obj,pop), *args)
+ 
+        
+        
+a={"A":"B","C":"D"}
+b=["A","B"]
+c={"A":{"B":[{"C":"D"}]}}
+
+
+#print examiner(c, "A")
+print examiner(b,1)
+
+
